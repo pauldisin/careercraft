@@ -1,0 +1,6 @@
+{
+  "name": "CareerCraft",
+  "description": "Instantly create professional, ATS-optimized resumes and cover letters in minutes using AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

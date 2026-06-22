@@ -1,0 +1,833 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+/* Resume Templates */
+.resume-template-modern {
+  font-family: 'Inter', sans-serif;
+  color: #334155;
+}
+.resume-template-modern h1 {
+  font-size: clamp(20px, 5vw, 28px);
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+.resume-template-modern h2 {
+  font-size: clamp(14px, 3vw, 18px);
+  font-weight: 700;
+  color: #4f46e5;
+  border-bottom: 2px solid #e0e7ff;
+  padding-bottom: 4px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.resume-template-modern h3 {
+  font-size: clamp(13px, 2.5vw, 16px);
+  font-weight: 600;
+  color: #0f172a;
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+.resume-template-modern p, .resume-template-modern li {
+  font-size: clamp(12px, 2vw, 14px);
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+.resume-template-corporate {
+  font-family: 'Lora', 'Merriweather', 'Times New Roman', Times, serif;
+  color: #000;
+}
+.resume-template-corporate h1 {
+  font-size: clamp(18pt, 4vw, 24pt);
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.resume-template-corporate h2 {
+  font-size: clamp(12pt, 3vw, 14pt);
+  border-bottom: 1px solid #000;
+  margin-top: 16px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.resume-template-corporate h3 {
+  font-size: clamp(10pt, 2.5vw, 12pt);
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+.resume-template-corporate p, .resume-template-corporate li {
+  font-size: clamp(9pt, 2vw, 11pt);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.resume-template-minimal {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #171717;
+  font-weight: 400;
+}
+.resume-template-minimal h1 {
+  font-family: 'Space Grotesk', 'Outfit', 'Inter', sans-serif;
+  font-size: clamp(20px, 4vw, 26px);
+  font-weight: 500;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+.resume-template-minimal h2 {
+  font-family: 'Space Grotesk', 'Outfit', 'Inter', sans-serif;
+  font-size: clamp(10px, 2vw, 12px);
+  font-weight: 700;
+  color: #404040;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.resume-template-minimal h3 {
+  font-family: 'Space Grotesk', 'Outfit', 'Inter', sans-serif;
+  font-size: clamp(12px, 2.5vw, 14px);
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+.resume-template-minimal p, .resume-template-minimal li {
+  font-size: clamp(11px, 2vw, 13px);
+  line-height: 1.6;
+  color: #262626;
+  margin-bottom: 6px;
+}
+.resume-template-minimal li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #a3a3a3;
+}
+
+.resume-template-executive {
+  font-family: 'Cormorant Garamond', serif;
+  color: #1e293b;
+}
+.resume-template-executive h1 {
+  font-size: clamp(24px, 6vw, 36px);
+  font-weight: 300;
+  color: #0f172a;
+  margin-bottom: 8px;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+.resume-template-executive h2 {
+  font-size: clamp(11px, 2.5vw, 14px);
+  font-weight: 600;
+  color: var(--resume-accent, #4f46e5);
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 6px 0;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  text-align: center;
+}
+.resume-template-executive h3 {
+  font-size: clamp(15px, 3vw, 18px);
+  font-weight: 600;
+  color: #0f172a;
+  margin-top: 16px;
+  margin-bottom: 4px;
+}
+.resume-template-executive p, .resume-template-executive li {
+  font-size: clamp(13px, 2.5vw, 15px);
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+.resume-template-executive li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--resume-accent, #4f46e5);
+}
+
+.resume-template-creative {
+  font-family: 'Inter', sans-serif;
+  color: #1e293b;
+}
+.resume-template-creative h1 {
+  font-size: clamp(28px, 8vw, 48px);
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 12px;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+}
+.resume-template-creative h2 {
+  font-size: clamp(18px, 4vw, 24px);
+  font-weight: 800;
+  color: #0f172a;
+  margin-top: 30px;
+  margin-bottom: 12px;
+  position: relative;
+  display: inline-block;
+}
+.resume-template-creative h3 {
+  font-size: clamp(15px, 3vw, 18px);
+  font-weight: 700;
+  color: var(--resume-accent, #4f46e5);
+  margin-top: 20px;
+  margin-bottom: 4px;
+}
+.resume-template-creative p, .resume-template-creative li {
+  font-size: clamp(13px, 2.5vw, 16px);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.resume-template-modern img,
+.resume-template-corporate img,
+.resume-template-minimal img,
+.resume-template-executive img,
+.resume-template-creative img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.resume-profile-picture {
+  border-radius: 50% !important;
+  width: 160px !important;
+  height: 160px !important;
+  object-fit: cover !important;
+  margin: 0 auto 20px !important;
+  display: block !important;
+}
+
+/* Mobile & Tablet Reflow & Preview Optimization */
+.resume-template-modern.preview-mobile,
+.resume-template-corporate.preview-mobile,
+.resume-template-minimal.preview-mobile,
+.resume-template-executive.preview-mobile,
+.resume-template-creative.preview-mobile,
+.resume-template-modern.preview-tablet,
+.resume-template-corporate.preview-tablet,
+.resume-template-minimal.preview-tablet,
+.resume-template-executive.preview-tablet,
+.resume-template-creative.preview-tablet {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 640px) {
+  .resume-template-modern,
+  .resume-template-corporate,
+  .resume-template-minimal,
+  .resume-template-executive,
+  .resume-template-creative {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
+/* Modern Mobile & Tablet */
+.resume-template-modern.preview-mobile h1, .resume-template-modern.preview-tablet h1 { font-size: 22px; margin-bottom: 6px; }
+.resume-template-modern.preview-mobile h2, .resume-template-modern.preview-tablet h2 { font-size: 14px; margin-top: 16px; margin-bottom: 8px; }
+.resume-template-modern.preview-mobile h3, .resume-template-modern.preview-tablet h3 { font-size: 14px; margin-top: 12px; }
+.resume-template-modern.preview-mobile p, .resume-template-modern.preview-tablet p,
+.resume-template-modern.preview-mobile li, .resume-template-modern.preview-tablet li { font-size: 13px; line-height: 1.5; margin-bottom: 6px; }
+.resume-template-modern.preview-mobile ul, .resume-template-modern.preview-tablet ul { padding-left: 14px; margin-bottom: 12px; }
+
+@media (max-width: 640px) {
+  .resume-template-modern h1 { font-size: 22px; margin-bottom: 6px; }
+  .resume-template-modern h2 { font-size: 14px; margin-top: 16px; margin-bottom: 8px; }
+  .resume-template-modern h3 { font-size: 14px; margin-top: 12px; }
+  .resume-template-modern p,
+  .resume-template-modern li { font-size: 13px; line-height: 1.5; margin-bottom: 6px; }
+  .resume-template-modern ul { padding-left: 14px; margin-bottom: 12px; }
+}
+
+/* Corporate Mobile & Tablet */
+.resume-template-corporate.preview-mobile h1, .resume-template-corporate.preview-tablet h1 { font-size: 16pt; margin-bottom: 8px; }
+.resume-template-corporate.preview-mobile h2, .resume-template-corporate.preview-tablet h2 { font-size: 12pt; margin-top: 14px; margin-bottom: 6px; }
+.resume-template-corporate.preview-mobile h3, .resume-template-corporate.preview-tablet h3 { font-size: 11pt; margin-top: 10px; }
+.resume-template-corporate.preview-mobile p, .resume-template-corporate.preview-tablet p,
+.resume-template-corporate.preview-mobile li, .resume-template-corporate.preview-tablet li { font-size: 10pt; line-height: 1.4; margin-bottom: 6px; }
+.resume-template-corporate.preview-mobile ul, .resume-template-corporate.preview-tablet ul { padding-left: 16px; margin-bottom: 10px; }
+
+@media (max-width: 640px) {
+  .resume-template-corporate h1 { font-size: 16pt; margin-bottom: 8px; }
+  .resume-template-corporate h2 { font-size: 12pt; margin-top: 14px; margin-bottom: 6px; }
+  .resume-template-corporate h3 { font-size: 11pt; margin-top: 10px; }
+  .resume-template-corporate p,
+  .resume-template-corporate li { font-size: 10pt; line-height: 1.4; margin-bottom: 6px; }
+  .resume-template-corporate ul { padding-left: 16px; margin-bottom: 10px; }
+}
+
+/* Minimal Mobile & Tablet */
+.resume-template-minimal.preview-mobile h1, .resume-template-minimal.preview-tablet h1 { font-size: 18px; margin-bottom: 8px; }
+.resume-template-minimal.preview-mobile h2, .resume-template-minimal.preview-tablet h2 { font-size: 11px; margin-top: 16px; margin-bottom: 6px; }
+.resume-template-minimal.preview-mobile h3, .resume-template-minimal.preview-tablet h3 { font-size: 13px; margin-top: 10px; }
+.resume-template-minimal.preview-mobile p, .resume-template-minimal.preview-tablet p,
+.resume-template-minimal.preview-mobile li, .resume-template-minimal.preview-tablet li { font-size: 12px; line-height: 1.4; margin-bottom: 6px; }
+.resume-template-minimal.preview-mobile ul, .resume-template-minimal.preview-tablet ul { margin-bottom: 12px; }
+
+@media (max-width: 640px) {
+  .resume-template-minimal h1 { font-size: 18px; margin-bottom: 8px; }
+  .resume-template-minimal h2 { font-size: 11px; margin-top: 16px; margin-bottom: 6px; }
+  .resume-template-minimal h3 { font-size: 13px; margin-top: 10px; }
+  .resume-template-minimal p,
+  .resume-template-minimal li { font-size: 12px; line-height: 1.4; margin-bottom: 6px; }
+  .resume-template-minimal ul { margin-bottom: 12px; }
+}
+
+/* Executive Mobile & Tablet */
+.resume-template-executive.preview-mobile h1, .resume-template-executive.preview-tablet h1 { font-size: 24px; margin-bottom: 8px; }
+.resume-template-executive.preview-mobile h2, .resume-template-executive.preview-tablet h2 { font-size: 11px; margin-top: 20px; padding: 4px 0; letter-spacing: 0.1em; margin-bottom: 10px; }
+.resume-template-executive.preview-mobile h3, .resume-template-executive.preview-tablet h3 { font-size: 15px; margin-top: 14px; }
+.resume-template-executive.preview-mobile p, .resume-template-executive.preview-tablet p,
+.resume-template-executive.preview-mobile li, .resume-template-executive.preview-tablet li { font-size: 13px; line-height: 1.5; margin-bottom: 6px; }
+.resume-template-executive.preview-mobile ul, .resume-template-executive.preview-tablet ul { margin-bottom: 14px; }
+
+@media (max-width: 640px) {
+  .resume-template-executive h1 { font-size: 24px; margin-bottom: 8px; }
+  .resume-template-executive h2 { font-size: 11px; margin-top: 20px; padding: 4px 0; letter-spacing: 0.1em; margin-bottom: 10px; }
+  .resume-template-executive h3 { font-size: 15px; margin-top: 14px; }
+  .resume-template-executive p,
+  .resume-template-executive li { font-size: 13px; line-height: 1.5; margin-bottom: 6px; }
+  .resume-template-executive ul { margin-bottom: 14px; }
+}
+
+/* Creative Mobile & Tablet */
+.resume-template-creative.preview-mobile h1, .resume-template-creative.preview-tablet h1 { font-size: 28px; margin-bottom: 10px; }
+.resume-template-creative.preview-mobile h2, .resume-template-creative.preview-tablet h2 { font-size: 18px; margin-top: 20px; margin-bottom: 10px; }
+.resume-template-creative.preview-mobile h3, .resume-template-creative.preview-tablet h3 { font-size: 15px; margin-top: 16px; }
+.resume-template-creative.preview-mobile p, .resume-template-creative.preview-tablet p,
+.resume-template-creative.preview-mobile li, .resume-template-creative.preview-tablet li { font-size: 13px; line-height: 1.5; margin-bottom: 6px; }
+.resume-template-creative.preview-mobile ul, .resume-template-creative.preview-tablet ul { margin-bottom: 16px; }
+.resume-template-creative.preview-mobile li, .resume-template-creative.preview-tablet li { padding-left: 12px; border-left-width: 2px; }
+
+@media (max-width: 640px) {
+  .resume-template-creative h1 { font-size: 28px; margin-bottom: 10px; }
+  .resume-template-creative h2 { font-size: 18px; margin-top: 20px; margin-bottom: 10px; }
+  .resume-template-creative h3 { font-size: 15px; margin-top: 16px; }
+  .resume-template-creative p,
+  .resume-template-creative li { font-size: 13px; line-height: 1.5; margin-bottom: 6px; }
+  .resume-template-creative ul { margin-bottom: 16px; }
+  .resume-template-creative li { padding-left: 12px; border-left-width: 2px; }
+}
+
+/* Cover Letter Templates */
+.cover-letter-template-modern {
+  font-family: 'Inter', sans-serif;
+  color: #334155;
+  background-color: #ffffff;
+  padding: 0;
+  border-radius: 0;
+  border-top: none;
+  box-shadow: none;
+}
+.cover-letter-template-modern h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent-color, #065f46);
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+  border-bottom: 2px solid var(--accent-color, #10b981);
+  padding-bottom: 8px;
+}
+.cover-letter-template-modern p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.cover-letter-template-modern h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent-color, #065f46);
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+.cover-letter-template-modern h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.cover-letter-template-modern strong {
+  font-weight: 700;
+  color: #0f172a;
+}
+.cover-letter-template-modern ul {
+  list-style-type: disc;
+  padding-left: 24px;
+  margin-bottom: 20px;
+}
+.cover-letter-template-modern li {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.cover-letter-template-classic {
+  font-family: 'Cormorant Garamond', serif;
+  color: #1a1a1a;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+.cover-letter-template-classic h1 {
+  font-size: 32pt;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--accent-color, #1a1a1a);
+  padding-bottom: 20px;
+  color: var(--accent-color, #000);
+  font-style: italic;
+}
+.cover-letter-template-classic p {
+  font-size: 14pt;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  text-align: justify;
+}
+.cover-letter-template-classic h2 {
+  font-size: 18pt;
+  font-weight: bold;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  color: var(--accent-color, #000);
+}
+.cover-letter-template-classic h3 {
+  font-size: 16pt;
+  font-weight: bold;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  color: #000;
+}
+.cover-letter-template-classic strong {
+  font-weight: bold;
+  color: var(--accent-color, #000);
+}
+.cover-letter-template-classic ul {
+  list-style-type: square;
+  padding-left: 24px;
+  margin-bottom: 18px;
+}
+.cover-letter-template-classic li {
+  font-size: 14pt;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.cover-letter-template-minimal {
+  font-family: 'Inter', sans-serif;
+  color: #404040;
+  background-color: transparent;
+  padding: 0;
+  max-width: none;
+  margin: 0;
+  border-left: none;
+}
+.cover-letter-template-minimal h1 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent-color, #171717);
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  border-bottom: 2px solid var(--accent-color, #000);
+  display: inline-block;
+  padding-bottom: 4px;
+}
+.cover-letter-template-minimal p {
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.cover-letter-template-minimal h2 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent-color, #171717);
+  margin-top: 24px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.cover-letter-template-minimal h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #404040;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.cover-letter-template-minimal strong {
+  font-weight: 600;
+  color: var(--accent-color, #171717);
+}
+.cover-letter-template-minimal ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 16px;
+}
+.cover-letter-template-minimal li {
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 16px;
+}
+.cover-letter-template-minimal li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #a3a3a3;
+}
+
+.cover-letter-template-creative {
+  font-family: 'Inter', sans-serif;
+  color: #1e293b;
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  background-image: none;
+  box-shadow: none;
+  border: none;
+}
+.cover-letter-template-creative h1 {
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--accent-color, #0f172a);
+  margin-bottom: 32px;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.cover-letter-template-creative p {
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 24px;
+  color: #334155;
+}
+.cover-letter-template-creative h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--accent-color, #0f172a);
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+.cover-letter-template-creative h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
+.cover-letter-template-creative strong {
+  font-weight: 800;
+  color: #0f172a;
+}
+.cover-letter-template-creative ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 24px;
+}
+.cover-letter-template-creative li {
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 12px;
+  border-left: 3px solid var(--accent-color, #cbd5e1);
+  padding-left: 16px;
+}
+
+.cover-letter-template-results {
+  font-family: 'JetBrains Mono', monospace;
+  color: #0f172a;
+  background-color: transparent;
+  padding: 0;
+  border-left: none;
+  box-shadow: none;
+}
+.cover-letter-template-results h1 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #000;
+  margin-bottom: 32px;
+  text-transform: uppercase;
+  background: var(--accent-color, #000);
+  color: #fff;
+  display: inline-block;
+  padding: 4px 12px;
+}
+.cover-letter-template-results p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.cover-letter-template-results h2 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--accent-color, #000);
+  margin-top: 24px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 4px;
+}
+.cover-letter-template-results h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.cover-letter-template-results strong {
+  font-weight: 800;
+  color: var(--accent-color, #000);
+}
+.cover-letter-template-results ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+.cover-letter-template-results li {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #334155;
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+.cover-letter-template-results li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent-color, #2563eb);
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   'PDF-FRIENDLY' EXPORT DESIGN SYSTEM OVERRIDES
+   Standardizes margins, font-sizes, and line heights for print/A4 sheets.
+   ========================================================================== */
+
+/* Main wrapping class toggle */
+.pdf-friendly {
+  --pdf-font-scale: 1;
+  /* Set standard physical print variables */
+  --pdf-shrink-factor: 1;
+  --pdf-page-padding: calc(36px * var(--pdf-shrink-factor));
+  --pdf-h1-size: calc(22pt * var(--pdf-shrink-factor) * var(--pdf-font-scale)) !important;
+  --pdf-h2-size: calc(13pt * var(--pdf-shrink-factor) * var(--pdf-font-scale)) !important;
+  --pdf-h3-size: calc(10.5pt * var(--pdf-shrink-factor) * var(--pdf-font-scale)) !important;
+  --pdf-body-size: calc(9.5pt * var(--pdf-shrink-factor) * var(--pdf-font-scale)) !important;
+  --pdf-meta-size: calc(8.5pt * var(--pdf-shrink-factor) * var(--pdf-font-scale)) !important;
+  --pdf-line-height: calc(1.45 * var(--pdf-shrink-factor) * var(--pdf-font-scale)) !important;
+}
+
+/* Page Margins standardization: Override any variable outer padding */
+.pdf-friendly .p-8,
+.pdf-friendly .md\:p-10,
+.pdf-friendly .md\:p-11,
+.pdf-friendly .p-12,
+.pdf-friendly .md\:p-12 {
+  padding: var(--pdf-page-padding) !important;
+}
+
+/* Base text standardizations */
+.pdf-friendly,
+.pdf-friendly p,
+.pdf-friendly li,
+.pdf-friendly span,
+.pdf-friendly div:not(.no-body-style) {
+  line-height: var(--pdf-line-height) !important;
+}
+
+/* Headings sizing */
+.pdf-friendly h1,
+.pdf-friendly .h1-style {
+  font-size: var(--pdf-h1-size) !important;
+  line-height: 1.15 !important;
+  margin-bottom: calc(6px * var(--pdf-shrink-factor)) !important;
+}
+
+.pdf-friendly h2,
+.pdf-friendly .h2-style {
+  font-size: var(--pdf-h2-size) !important;
+  line-height: 1.25 !important;
+  margin-top: calc(14px * var(--pdf-shrink-factor)) !important;
+  margin-bottom: calc(6px * var(--pdf-shrink-factor)) !important;
+}
+
+.pdf-friendly h3,
+.pdf-friendly h4,
+.pdf-friendly .h3-style,
+.pdf-friendly .h4-style {
+  font-size: var(--pdf-h3-size) !important;
+  line-height: 1.3 !important;
+  margin-top: calc(8px * var(--pdf-shrink-factor)) !important;
+  margin-bottom: calc(3px * var(--pdf-shrink-factor)) !important;
+}
+
+/* Paragraphs & List Items */
+.pdf-friendly p,
+.pdf-friendly .SafeHTML p,
+.pdf-friendly .SafeHTML div,
+.pdf-friendly li {
+  font-size: var(--pdf-body-size) !important;
+  margin-bottom: calc(4px * var(--pdf-shrink-factor)) !important;
+}
+
+/* Metadata components (dates, locations, email counters) */
+.pdf-friendly .text-[10px],
+.pdf-friendly .text-[9px],
+.pdf-friendly .text-[11px] {
+  font-size: var(--pdf-meta-size) !important;
+}
+
+/* List/List-Item spacing standards */
+.pdf-friendly ul,
+.pdf-friendly ol {
+  margin-bottom: calc(6px * var(--pdf-shrink-factor)) !important;
+}
+
+.pdf-friendly li {
+  margin-bottom: calc(3px * var(--pdf-shrink-factor)) !important;
+}
+
+/* Spacers & vertical margins standardization */
+.pdf-friendly .space-y-8 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: calc(18px * var(--pdf-shrink-factor)) !important;
+}
+
+.pdf-friendly .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: calc(14px * var(--pdf-shrink-factor)) !important;
+}
+
+.pdf-friendly .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: calc(10px * var(--pdf-shrink-factor)) !important;
+}
+
+/* Grid spacing standard */
+.pdf-friendly .grid {
+  gap: calc(16px * var(--pdf-shrink-factor)) !important;
+}
+
+/* Ensure no shadows on elements for clean PDF print canvas */
+.pdf-friendly * {
+  box-shadow: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   GENERAL DYNAMIC SHRINK CLASS OVERRIDES (Supports non-friendly templates too!)
+   -------------------------------------------------------------------------- */
+.pdf-shrunk {
+  --pdf-shrink-factor: 1;
+}
+
+.pdf-shrunk .p-8,
+.pdf-shrunk .p-12,
+.pdf-shrunk .md\:p-10,
+.pdf-shrunk .md\:p-11,
+.pdf-shrunk .md\:p-12 {
+  padding: calc(32px * var(--pdf-shrink-factor)) !important;
+}
+
+.pdf-shrunk .space-y-8 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: calc(24px * var(--pdf-shrink-factor)) !important;
+}
+.pdf-shrunk .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: calc(16px * var(--pdf-shrink-factor)) !important;
+}
+.pdf-shrunk .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: calc(12px * var(--pdf-shrink-factor)) !important;
+}
+
+.pdf-shrunk h1 {
+  font-size: calc(1.8rem * var(--pdf-shrink-factor)) !important;
+  line-height: 1.25 !important;
+}
+.pdf-shrunk h2 {
+  font-size: calc(1.3rem * var(--pdf-shrink-factor)) !important;
+  line-height: 1.25 !important;
+}
+.pdf-shrunk h3 {
+  font-size: calc(1.05rem * var(--pdf-shrink-factor)) !important;
+  line-height: 1.25 !important;
+}
+.pdf-shrunk p, 
+.pdf-shrunk li, 
+.pdf-shrunk span:not(.lucide), 
+.pdf-shrunk div:not(.no-body-style) {
+  font-size: calc(100% * var(--pdf-shrink-factor)) !important;
+  line-height: calc(1.4 * var(--pdf-shrink-factor)) !important;
+}
+
+/* Precise section/record overflow highlight design inside the A4 canvas */
+.pdf-overflow-crossing {
+  position: relative !important;
+  outline: 2px dashed #f59e0b !important;
+  outline-offset: 2px !important;
+  background-color: rgba(245, 158, 11, 0.02) !important;
+  transition: all 0.2s ease-in-out;
+}
+.pdf-overflow-crossing::after {
+  content: "⚠️ Break Split" !important;
+  position: absolute !important;
+  top: 4px !important;
+  right: 4px !important;
+  background-color: #d97706 !important;
+  color: #ffffff !important;
+  font-size: 8px !important;
+  font-family: var(--font-mono) !important;
+  font-weight: bold !important;
+  padding: 1px 5px !important;
+  border-radius: 4px !important;
+  z-index: 40 !important;
+  opacity: 0.9 !important;
+  pointer-events: none !important;
+  text-transform: uppercase !important;
+}
+
+.pdf-overflow-item {
+  position: relative !important;
+  outline: 2px dashed #ef4444 !important;
+  outline-offset: 2px !important;
+  background-color: rgba(239, 68, 68, 0.02) !important;
+  transition: all 0.2s ease-in-out;
+}
+.pdf-overflow-item::after {
+  content: "📉 Page Overflow" !important;
+  position: absolute !important;
+  top: 4px !important;
+  right: 4px !important;
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
+  font-size: 8px !important;
+  font-family: var(--font-mono) !important;
+  font-weight: bold !important;
+  padding: 1px 5px !important;
+  border-radius: 4px !important;
+  z-index: 40 !important;
+  opacity: 0.9 !important;
+  pointer-events: none !important;
+  text-transform: uppercase !important;
+}
+

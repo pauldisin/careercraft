@@ -1,0 +1,38 @@
+groups:
+  - name: AppletAlerts
+    rules:
+      - alert: HighErrorRate
+        expr: rate(app_errors_total[5m]) > 0.05
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High error rate detected"
+          description: "The application is experiencing a high number of errors ({{ $value }} errors/sec)."
+
+      - alert: AIAvailabilityDrop
+        expr: rate(ai_requests_total{status="error"}[5m]) / rate(ai_requests_total[5m]) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "AI Generation Availability Drop"
+          description: "Over 10% of AI requests are failing in the last 5 minutes."
+
+      - alert: StripeWebhookFailures
+        expr: rate(stripe_webhooks_total{status="error"}[10m]) > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Stripe Webhook Processing Failures"
+          description: "Stripe webhooks are failing, which might block payments or subscriptions."
+
+      - alert: HighLatency
+        expr: histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le)) > 2
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High HTTP Latency"
+          description: "95th percentile of HTTP requests is taking longer than 2 seconds."
